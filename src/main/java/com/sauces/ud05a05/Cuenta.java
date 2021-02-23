@@ -68,16 +68,16 @@ public class Cuenta {
     public void realizarTransferencia(Cuenta destino,float cantidad){
     
     }
-    public String listarMovimientos(){
+    /*public String listarMovimientos(){
     return List<movimiento>;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Cuenta{" + "codigo=" + codigo + ", titular=" + titular + ", saldo=" + saldo + ", movimientos=" + movimientos + '}';
     }
-    public boolean equals(Object o){
+   /* public boolean equals(Object o){
     return o;
-    }
+    }*/
     
 }
