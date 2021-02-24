@@ -5,6 +5,8 @@
  */
 package com.sauces.ud05a05;
 
+import java.util.Scanner;
+
 /**
  *
  * @author daw1
@@ -16,6 +18,59 @@ public class AppBanco {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    }
+        Scanner teclado=new Scanner(System.in);
+        int accion;
+        Banco banco;
+        banco = new Banco("Banco Sauces");
+        String codigo=null;
+        String titular=null;
+        float saldo=0; 
+        int opcion;
+        float cantidad;
+        Cuenta cuenta;
+        do{
+            System.out.println("1- Abrir cuenta.");
+            System.out.println("2- Operar con cuenta.");
+            System.out.println("3- Cancelar cuenta.");
+            System.out.println("4- Listar cuentas.");
+            System.out.println("5- Consultar total depositos.");
+            System.out.println("0- Cerrar Aplicacion");
+            System.out.print("Escoja accion. ");
+            accion = teclado.nextInt();
+            teclado.nextLine();
+        }while(accion!=0);
+        switch(accion){
+            case 1: if(!banco.abrirCuenta(codigo , titular , saldo)){
+                System.out.println("Cuenta abierta.");
+            }else{
+                System.out.println("No se ha podido abrir la cuenta.");
+            }
+                break;
+            case 2:System.out.println("Operar con cuenta");
+                    System.out.println("Introduzca codigo");
+                    codigo=teclado.nextLine();
+                   cuenta=banco.getCuenta(codigo);
+                    if(cuenta!=null{
+                        System.out.println("1- Ingresar dinero.");
+                        System.out.println("2- Reintegrar dinero.");
+                        System.out.println("3- Realizar Transferencia.");
+                        System.out.println("4- Consultar total depositos.");
+                        System.out.println("0- Cerrar Aplicacion");
+                        System.out.print("Escoja accion. ");
+                        opcion = teclado.nextInt();
+                        teclado.nextLine();
+                        switch (opcion){
+                            case 1:
+                                System.out.print("Introduzca cantidad a ingresar.");
+				cantidad=teclado.nextFloat();
+				teclado.nextLine();
+				cuenta.ingresar(cantidad);
+				System.out.println("Cantidad ingresada"+cantidad);
+                        }
+                    }else{System.out.println("No existe una cuenta con ese codigo.");}
+        }
     
+        
+        }
 }
+

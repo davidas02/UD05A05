@@ -25,7 +25,7 @@ public class Cuenta {
         this.titular = titular;
         this.saldo = saldo;
         movimientos=new ArrayList<>();
-        movimientos.add(new movimiento(LocalDate.now(),'I',saldo,this.saldo))
+        movimientos.add(new Movimiento(LocalDate.now(),'I',saldo,this.saldo));
     }
     public String getCodigo() {
         return codigo;

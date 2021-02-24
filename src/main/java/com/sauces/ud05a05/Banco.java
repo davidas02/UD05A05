@@ -58,7 +58,9 @@ public Banco(String nombre){
         return total;
     }
     public Cuenta getCuenta(String codigo){
+    Cuenta c=null;
     
+    return c;
     }
     @Override
     public String toString() {
