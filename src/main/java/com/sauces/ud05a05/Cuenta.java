@@ -115,5 +115,9 @@ public class Cuenta {
         }
         return true;
     }
+
+    void realizarTransferencia(String codigo, float cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -35,9 +35,8 @@ public class AppBanco {
             System.out.println("4- Listar cuentas.");
             System.out.println("5- Consultar total depositos.");
             System.out.println("0- Cerrar Aplicacion");
-            System.out.print("Escoja accion. ");
+            System.out.println("Escoja accion. ");
             accion = teclado.nextInt();
-            teclado.nextLine();
         }while(accion!=0);
         switch(accion){
             case 1: if(!banco.abrirCuenta(codigo , titular , saldo)){
@@ -50,11 +49,12 @@ public class AppBanco {
                     System.out.println("Introduzca codigo");
                     codigo=teclado.nextLine();
                    cuenta=banco.getCuenta(codigo);
-                    if(cuenta!=null{
+                    if(cuenta!=null){
                         System.out.println("1- Ingresar dinero.");
                         System.out.println("2- Reintegrar dinero.");
-                        System.out.println("3- Realizar Transferencia.");
-                        System.out.println("4- Consultar total depositos.");
+                        System.out.println("5- Consultar Saldo.");
+                        System.out.println("4- Realizar Transferencia.");
+                        System.out.println("5- Consultar total depositos.");
                         System.out.println("0- Cerrar Aplicacion");
                         System.out.print("Escoja accion. ");
                         opcion = teclado.nextInt();
@@ -65,9 +65,35 @@ public class AppBanco {
 				cantidad=teclado.nextFloat();
 				teclado.nextLine();
 				cuenta.ingresar(cantidad);
-				System.out.println("Cantidad ingresada"+cantidad);
+				System.out.println("Cantidad ingresada "+cantidad+".");
+                            break;
+                            case 2:
+                                System.out.println("Introduzca cantidad a reintegrar.");
+                                cantidad=teclado.nextFloat();
+                                teclado.nextLine();
+                                cuenta.reintegrar(cantidad);
+                                System.out.println("Cantidad reintegrada "+cantidad+".");
+                            break;
+                            case 3:
+                                System.out.println("Su saldo es :"+cuenta.getSaldo()+".");
+                            break;
+                            case 4:
+                                System.out.println("Introduzca cantidad a transferir.");
+                                cantidad=teclado.nextFloat();
+                                teclado.nextLine();
+                                System.out.println("introduzca cuenta a la cual se transferira el dinero.");
+                                 String destino=teclado.nextLine();
+                                cuenta.realizarTransferencia(destino, cantidad);
+                            break;
+                            case 5:
+                                cuenta.listarMovimientos();
                         }
-                    }else{System.out.println("No existe una cuenta con ese codigo.");}
+                    }else{
+                        System.out.println("No existe una cuenta con ese codigo.");
+                    }
+                    break;
+            case 3:
+                   
         }
     
         

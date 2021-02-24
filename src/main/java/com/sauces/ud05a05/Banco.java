@@ -42,7 +42,7 @@ public Banco(String nombre){
     } 
     public boolean cancelarCuenta(String codigo){
         boolean correcto=false;
-        int posicion = this.buscarCuenta(codigo);
+         int posicion = this.buscarCuenta(codigo);
             if(posicion !=-1){
                 cuentas.remove(posicion);
                 correcto=true;
@@ -59,7 +59,11 @@ public Banco(String nombre){
     }
     public Cuenta getCuenta(String codigo){
     Cuenta c=null;
-    
+    int posicion;
+    posicion=this.buscarCuenta(codigo);
+    if(posicion!=-1){
+         c=cuentas.get(posicion);
+         }
     return c;
     }
     @Override
