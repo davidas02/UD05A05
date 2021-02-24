@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author daw1
+ * @author David Aparicio Sir
  */
 public class Movimiento {
     private LocalDate fecha;
