@@ -23,19 +23,19 @@ public class Movimiento {
         this.cantidad = cantidad;
         this.saldo = saldo;
     }
-
+    /*Obtiene la fecha del movimiento*/
     public LocalDate getFecha() {
         return fecha;
     }
-
+    /*obtiene el tipo del movimiento*/
     public char getTipo() {
         return tipo;
     }
-
-    public float getCantidad() {
+    /*Obtiene la cantidad del movimiento*/
+   public float getCantidad() {
         return cantidad;
     }
-
+   /*Devuelve el saldo de la cuenta */
     public float getSaldo() {
         return saldo;
     }

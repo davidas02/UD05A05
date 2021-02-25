@@ -37,9 +37,17 @@ public class AppBanco {
             System.out.println("0- Cerrar Aplicacion");
             System.out.println("Escoja accion. ");
             accion = teclado.nextInt();
-        }while(accion!=0);
-        switch(accion){
-            case 1: if(!banco.abrirCuenta(codigo , titular , saldo)){
+            teclado.nextLine();
+        switch(accion){ 
+            case 1: System.out.println("Abrir cuenta");
+                System.out.println("Introduzca el codigo. ");
+                codigo=teclado.nextLine();              
+                System.out.println("Introduzca su nombre. ");
+                titular=teclado.nextLine();
+                System.out.println("Introduce saldo.");
+                saldo=teclado.nextFloat();
+                
+                if(banco.abrirCuenta(codigo , titular , saldo)){
                 System.out.println("Cuenta abierta.");
             }else{
                 System.out.println("No se ha podido abrir la cuenta.");
@@ -52,13 +60,12 @@ public class AppBanco {
                     if(cuenta!=null){
                         System.out.println("1- Ingresar dinero.");
                         System.out.println("2- Reintegrar dinero.");
-                        System.out.println("5- Consultar Saldo.");
+                        System.out.println("3- Consultar Saldo.");
                         System.out.println("4- Realizar Transferencia.");
                         System.out.println("5- Consultar total depositos.");
                         System.out.println("0- Cerrar Aplicacion");
                         System.out.print("Escoja accion. ");
                         opcion = teclado.nextInt();
-                        teclado.nextLine();
                         switch (opcion){
                             case 1:
                                 System.out.print("Introduzca cantidad a ingresar.");
@@ -70,7 +77,6 @@ public class AppBanco {
                             case 2:
                                 System.out.println("Introduzca cantidad a reintegrar.");
                                 cantidad=teclado.nextFloat();
-                                teclado.nextLine();
                                 cuenta.reintegrar(cantidad);
                                 System.out.println("Cantidad reintegrada "+cantidad+".");
                             break;
@@ -80,23 +86,44 @@ public class AppBanco {
                             case 4:
                                 System.out.println("Introduzca cantidad a transferir.");
                                 cantidad=teclado.nextFloat();
-                                teclado.nextLine();
                                 System.out.println("introduzca cuenta a la cual se transferira el dinero.");
-                                 String destino=teclado.nextLine();
+                                Cuenta destino=teclado.nextLine();
                                 cuenta.realizarTransferencia(destino, cantidad);
+                                System.out.println("Transferencia realizada");
                             break;
                             case 5:
                                 cuenta.listarMovimientos();
+                            break;
+                            case 0:
+                                System.out.println("Adios");
                         }
                     }else{
                         System.out.println("No existe una cuenta con ese codigo.");
                     }
                     break;
             case 3:
-                   
+                System.out.println("Cancelar cuenta");
+                codigo=teclado.nextLine();
+                banco.cancelarCuenta(codigo);
+                if(banco.cancelarCuenta(codigo)){
+                    System.out.println("Su cuenta ha sido cancelada.");
+                }else{System.out.println("Su cuenta no se ha podido cancelar");}
+            break;
+            case 4:
+                System.out.println("4- Listar cuentas.");
+                
+                
+                
+                for(Cuenta c: banco.getCuentas()){
+                    System.out.println(c.toString());
+                }
+            break;
+            case 5:System.out.println("Su total de depositos es: "+banco.getTotalDepositos());
+            break;
+            case 0:System.out.println("Adios, Vuelva pronto.");
+            break;
         }
-    
-        
-        }
+        }while(accion!=0);         
+    }      
 }
 

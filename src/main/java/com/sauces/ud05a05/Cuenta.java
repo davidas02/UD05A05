@@ -19,7 +19,7 @@ public class Cuenta {
    private String titular;
    private float saldo;
    private List<Movimiento> movimientos;
-
+    /* Crea una cuenta de la clase cuenta*/
     public Cuenta(String codigo, String titular, float saldo) {
         this.codigo = codigo;
         this.titular = titular;
@@ -71,7 +71,7 @@ public class Cuenta {
 	}   
     }
     public void realizarTransferencia(Cuenta destino,float cantidad){
-        if(cantidad<=saldo&&cantidad>0){
+        if(cantidad<=saldo&&cantidad>0&& cantidad<=this.saldo){
             this.saldo-=cantidad;
             destino.saldo+=cantidad;
             this.movimientos.add(new Movimiento(LocalDate.now(),'T', -cantidad, saldo));
@@ -114,10 +114,5 @@ public class Cuenta {
             return false;
         }
         return true;
-    }
-
-    void realizarTransferencia(String codigo, float cantidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }   
 }
