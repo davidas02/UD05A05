@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sauces.ud05a05;
+package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Objects;
  *
  * @author david Aparicio Sir "APA"
  */
-public class Cuenta {
+public class Cuenta implements Serializable{
    private String codigo;
    private String titular;
    private float saldo;

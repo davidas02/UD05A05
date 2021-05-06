@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sauces.ud05a05;
+package modelo;
 
 import java.time.LocalDate;
 
@@ -42,7 +42,7 @@ public class Movimiento {
 
     @Override
     public String toString() {
-        return "fecha," + fecha + " tipo," + tipo + " cantidad," + cantidad + " saldo," + saldo + '}';
+        return fecha+","+ tipo +","+ cantidad +","+ saldo;
     }
     
 }

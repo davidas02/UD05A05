@@ -5,6 +5,8 @@
  */
 package com.sauces.ud05a05;
 
+import modelo.Banco;
+import modelo.Cuenta;
 import java.util.Scanner;
 
 /**
@@ -62,7 +64,7 @@ public class AppBanco {
                         System.out.println("2- Reintegrar dinero.");
                         System.out.println("3- Consultar Saldo.");
                         System.out.println("4- Realizar Transferencia.");
-                        System.out.println("5- Consultar total depositos.");
+                        System.out.println("5- Consultar movimientos.");
                         System.out.println("0- Cerrar Aplicacion");
                         System.out.print("Escoja accion. ");
                         opcion = teclado.nextInt();
@@ -86,11 +88,13 @@ public class AppBanco {
                             case 4:
                                 System.out.println("Introduzca cantidad a transferir.");
                                 cantidad=teclado.nextFloat();
+                                teclado.nextLine();
                                 System.out.println("introduzca cuenta a la cual se transferira el dinero.");
-                                Cuenta destino=teclado.nextLine();
-                                cuenta.realizarTransferencia(destino, cantidad);
+                                 codigo=teclado.nextLine();
+                                cuenta.realizarTransferencia(banco.getCuenta(codigo), cantidad);
                                 System.out.println("Transferencia realizada");
                             break;
+
                             case 5:
                                 cuenta.listarMovimientos();
                             break;
