@@ -8,6 +8,8 @@ package vista;
 import controlador.Controlador;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import modelo.Cuenta;
 
 /**
@@ -42,7 +44,7 @@ public class Ventana extends javax.swing.JFrame {
         tSaldo = new javax.swing.JTextField();
         ListCuentas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaCuentas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         MiArchivo = new javax.swing.JMenu();
         MiAbrir = new javax.swing.JMenuItem();
@@ -112,9 +114,19 @@ public class Ventana extends javax.swing.JFrame {
         ListCuentas.setBorder(javax.swing.BorderFactory.createTitledBorder("Listado de Cuentas"));
 
         cuentaTM=new CuentaTableModel();
-        jTable1.setModel(cuentaTM);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        tablaCuentas.setModel(cuentaTM);
+        tablaCuentas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaCuentas);
+        tablaCuentas.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent lse){
+                int fila=tablaCuentas.getSelectedRow();
+                if(fila>=0){
+                    tCodigo.setText((String)tablaCuentas.getValueAt(fila,0));
+                    tTitular.setText((String)tablaCuentas.getValueAt(fila,1));
+                    tSaldo.setText(tablaCuentas.getValueAt(fila,2).toString());
+                }
+            }
+        });
 
         javax.swing.GroupLayout ListCuentasLayout = new javax.swing.GroupLayout(ListCuentas);
         ListCuentas.setLayout(ListCuentasLayout);
@@ -129,7 +141,7 @@ public class Ventana extends javax.swing.JFrame {
         );
         ListCuentasLayout.setVerticalGroup(
             ListCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 113, Short.MAX_VALUE)
+            .addGap(0, 129, Short.MAX_VALUE)
             .addGroup(ListCuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListCuentasLayout.createSequentialGroup()
                     .addContainerGap(13, Short.MAX_VALUE)
@@ -137,6 +149,9 @@ public class Ventana extends javax.swing.JFrame {
                     .addContainerGap(13, Short.MAX_VALUE)))
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(102, 255, 204));
+
+        MiArchivo.setBackground(new java.awt.Color(102, 255, 204));
         MiArchivo.setText("Archivo");
         MiArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +177,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuBar1.add(MiArchivo);
 
+        MiBanco.setBackground(new java.awt.Color(102, 255, 204));
         MiBanco.setText("Banco");
 
         abrirCuenta.setText("Abrir Cuenta");
@@ -295,10 +311,27 @@ public class Ventana extends javax.swing.JFrame {
     return  Float.parseFloat(this.tSaldo.getText());
     }
     public String getOperacion(){
-    return null;
+    int op;
+    String salida;
+        op = JOptionPane.showOptionDialog(this,"Operacion a realizar","Operar con cuenta",WIDTH,HEIGHT,null,new String[]{"INGRESAR","REINTEGRAR"},"XX");
+    switch(op){
+        case 1: salida="INGRESO";
+        break;
+        case 2: salida="REINTEGRO";
+        break;
+        default: salida=null;
+    }return salida;
     }
     public float getCantidad(){
-    return 0;
+    String entrada=JOptionPane.showInputDialog(this,"Introduzca cantidad");
+    if(entrada!=null){
+    try{
+    return Float.parseFloat(entrada);
+    }catch(NumberFormatException nfe){
+        mostrarMensaje("Error en la cantidad");
+    }
+    }
+    return -1;
     }
     public void mostrarCuentas(List<Cuenta> listado){
         cuentaTM.setCuentas(listado);
@@ -312,8 +345,8 @@ public class Ventana extends javax.swing.JFrame {
     }
     public void mostrarMensaje(String mensaje){
             JOptionPane.showMessageDialog(this,mensaje);}
-    
     private DialogoCuenta dialogo=new DialogoCuenta(this,true);
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cuenta;
     private javax.swing.JPanel ListCuentas;
@@ -327,13 +360,13 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private CuentaTableModel cuentaTM;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem operar;
     private javax.swing.JLabel saldo;
     private javax.swing.JTextField tCodigo;
     private javax.swing.JTextField tSaldo;
     private javax.swing.JTextField tTitular;
+    private CuentaTableModel cuentaTM;
+    private javax.swing.JTable tablaCuentas;
     private javax.swing.JLabel titular;
     // End of variables declaration//GEN-END:variables
 }

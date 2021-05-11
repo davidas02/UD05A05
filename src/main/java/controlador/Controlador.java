@@ -6,6 +6,8 @@
 package controlador;
 
 import modelo.Banco;
+import modelo.CantidadException;
+import modelo.Cuenta;
 import vista.Ventana;
 
 /**
@@ -31,11 +33,38 @@ public class Controlador {
                 vista.mostrarCuentas(modelo.getCuentas());
                 }else{vista.mostrarMensaje("No se ha podido abrir la cuenta");}
     }
-    public void operarConCuenta(){
-        
+    public void operarConCuenta() throws CantidadException{
+        int operacion;
+        String codigo;
+        float cantidad;
+        Cuenta c;
+        codigo=vista.getCodigo();
+        c=modelo.getCuenta(codigo);
+        if (c!=null){
+            operacion=vista.getOperacion();
+            cantidad=vista.getCantidad();
+            if(operacion!=-1){
+                cantidad=vista.getCantidad();
+                switch(operacion){
+                    case Ventana.INGRESAR:
+                        c.ingresar(cantidad);
+                        break;
+                    case Ventana.REINTEGRAR:
+                        c.reintegrar(cantidad);
+                        break;
+                }
+            }
+            vista.mostrarCuentas(modelo.getCuentas());
+            vista.mostrarMensaje("Operacion realizada");
+        }
     }  
     public void cancelarCuenta(){
-    
+        String codigo=vista.getCodigo();
+        if(modelo.cancelarCuenta(codigo)){
+            vista.mostrarMensaje("Cuenta Cancelada");
+        }else{
+        vista.mostrarMensaje("No se ha podido cancelar la cuenta");
+        }
     }
     public void listarCuentas(){
     

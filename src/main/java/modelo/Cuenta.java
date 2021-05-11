@@ -58,8 +58,11 @@ public class Cuenta implements Serializable{
     public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
-   public void ingresar (float cantidad){
-        if(cantidad>0){
+   public void ingresar (float cantidad) throws CantidadException{
+        if(cantidad<=0){
+            throw new CantidadException("La cantidad no cumple con los requisitos");
+        }
+       if(cantidad>0){
             saldo+=cantidad;
             movimientos.add(new Movimiento(LocalDate.now(),'I', cantidad, saldo));
         }
@@ -89,7 +92,7 @@ public class Cuenta implements Serializable{
     }
     @Override
     public String toString() {
-        return "codigo, " + codigo + " titular, " + titular + " saldo, " + saldo ;
+        return  codigo + "," + titular + "," + saldo;
     }
 
     @Override

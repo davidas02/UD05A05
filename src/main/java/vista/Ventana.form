@@ -5,9 +5,17 @@
     <Component class="javax.swing.JFileChooser" name="jFileChooser1">
     </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="66" type="rgb"/>
+        </Property>
+      </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="MiArchivo">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="66" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Archivo"/>
           </Properties>
           <Events>
@@ -34,6 +42,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="MiBanco">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="66" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Banco"/>
           </Properties>
           <SubComponents>
@@ -224,7 +235,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="113" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="129" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="13" max="32767" attributes="0"/>
@@ -243,9 +254,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tablaCuentas">
               <Properties>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="tablaCuentas.getSelectionModel().addListSelectionListener(new ListSelectionListener(){&#xa;    public void valueChanged(ListSelectionEvent lse){&#xa;        int fila=tablaCuentas.getSelectedRow();&#xa;        if(fila&gt;=0){&#xa;            tCodigo.setText((String)tablaCuentas.getValueAt(fila,0));&#xa;            tTitular.setText((String)tablaCuentas.getValueAt(fila,1));&#xa;            tSaldo.setText(tablaCuentas.getValueAt(fila,2).toString());&#xa;        }&#xa;    }&#xa;});">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
@@ -270,7 +281,7 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_DeclarationPre" type="java.lang.String" value="private CuentaTableModel cuentaTM;"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cuentaTM=new CuentaTableModel();&#xa;jTable1.setModel(cuentaTM);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="cuentaTM=new CuentaTableModel();&#xa;tablaCuentas.setModel(cuentaTM);"/>
               </AuxValues>
             </Component>
           </SubComponents>

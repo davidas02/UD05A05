@@ -51,6 +51,7 @@ public class DialogoCuenta extends javax.swing.JDialog {
             }
         });
 
+        bAceptar.setBackground(new java.awt.Color(51, 255, 51));
         bAceptar.setText("ACEPTAR");
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class DialogoCuenta extends javax.swing.JDialog {
             }
         });
 
+        bCancelar.setBackground(new java.awt.Color(255, 0, 0));
         bCancelar.setText("CANCELAR");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,8 +196,6 @@ public class DialogoCuenta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bACEPTAR;
-    private javax.swing.JButton bACEPTAR1;
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
     private javax.swing.JLabel codigo;
