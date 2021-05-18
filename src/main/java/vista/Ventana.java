@@ -7,6 +7,7 @@ package vista;
 
 import controlador.Controlador;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -34,7 +35,7 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFileChooser1 = new javax.swing.JFileChooser();
+        selectorFicheros = new javax.swing.JFileChooser();
         Cuenta = new javax.swing.JPanel();
         codigo = new javax.swing.JLabel();
         titular = new javax.swing.JLabel();
@@ -230,7 +231,9 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MiGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiGuardarActionPerformed
-        
+       if(selectorFicheros.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            int SAVE_DIALOG = JFileChooser.SAVE_DIALOG;
+        } 
     }//GEN-LAST:event_MiGuardarActionPerformed
 
     private void tSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tSaldoActionPerformed
@@ -242,7 +245,9 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_MiArchivoActionPerformed
 
     private void MiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiAbrirActionPerformed
-      
+       if(selectorFicheros.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+            int OPEN_DIALOG=JFileChooser.OPEN_DIALOG;
+        }
     }//GEN-LAST:event_MiAbrirActionPerformed
 
     private void abrirCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirCuentaActionPerformed
@@ -357,11 +362,11 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem abrirCuenta;
     private javax.swing.JMenuItem cancelarCuenta;
     private javax.swing.JLabel codigo;
-    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem operar;
     private javax.swing.JLabel saldo;
+    private javax.swing.JFileChooser selectorFicheros;
     private javax.swing.JTextField tCodigo;
     private javax.swing.JTextField tSaldo;
     private javax.swing.JTextField tTitular;

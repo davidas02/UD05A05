@@ -16,7 +16,7 @@ import modelo.Cuenta;
  */
 public class CuentaTableModel extends AbstractTableModel {
     private List<Cuenta> listado;
-    private String[] columnas=new String[]{"CODIGO","TITULAR","SALDO"};
+    private String[] columnas=new String[]{};
     
     public CuentaTableModel() {
         listado=new ArrayList<>();

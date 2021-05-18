@@ -153,6 +153,11 @@ public class DialogoCuenta extends javax.swing.JDialog {
     public float getSaldo(){
     return Float.parseFloat(this.tSaldo.getText());
     }
+    public void limpiarCampos(){
+    this.tCodigo.setText("");
+    this.tTitular.setText("");
+    this.tSaldo.setText("");
+    }
     /**
      * @param args the command line arguments
      */
